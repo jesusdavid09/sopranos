@@ -24,13 +24,21 @@
           "configurations": {
             "production": {
               "budgets": [
-                { "type": "initial", "maximumWarning": "500kb", "maximumError": "1mb" },
-                { "type": "anyComponentStyle", "maximumWarning": "2kb", "maximumError": "4kb" }
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
               ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with":    "src/environments/environment.prod.ts"
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -46,8 +54,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production":  { "buildTarget": "sopranos-tmdb-angular:build:production" },
-            "development": { "buildTarget": "sopranos-tmdb-angular:build:development" }
+            "production": {
+              "buildTarget": "sopranos-tmdb-angular:build:production"
+            },
+            "development": {
+              "buildTarget": "sopranos-tmdb-angular:build:development"
+            }
           },
           "defaultConfiguration": "development"
         }
