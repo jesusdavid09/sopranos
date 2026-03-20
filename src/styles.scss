@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap');
+
+/* =========================
+   VARIABLES TEMA MAFIA
+========================= */
+:root {
+  --ink:          #1a1208;
+  --ink2:         #0d0b07;
+  --smoke:        #2a2018;
+  --paper:        #c8b89a;
+  --paper-dim:    #a89878;
+  --paper-dark:   #6a5a42;
+  --gold:         #c8982a;
+  --gold-pale:    #e0b84a;
+  --gold-dim:     #7a5c18;
+  --blood:        #8b1a1a;
+  --blood-bright: #b02020;
+  --border:       #3a2e1e;
+  --border-gold:  rgba(200,152,42,0.35);
+  --panel:        rgba(20,15,8,0.92);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Libre Baskerville', Georgia, serif;
+  --font-type:    'Special Elite', 'Courier New', monospace;
+}
+
+/* =========================
+   RESET
+========================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+  background: var(--ink2);
+  color: var(--paper);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.6;
+  /* Textura de tela oscura */
+  background-image:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 2px,
+      rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px
+    );
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--gold-pale);
+  letter-spacing: 0.04em;
+}
+h1 { font-size: 2.4rem; margin-bottom: 1rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.4rem; }
+
+/* =========================
+   ANIMACIONES
+========================= */
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes fadeIn  { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.82; }
+  96%       { opacity: 1; }
+  98%       { opacity: 0.88; }
+}
+@keyframes bulletBounce {
+  0%, 100% { transform: translateY(0);     opacity: 0.45; }
+  50%       { transform: translateY(-14px); opacity: 1;    }
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* =========================
+   LINKS
+========================= */
+a { color: var(--gold); text-decoration: none; transition: color 0.25s; }
+a:hover { color: var(--gold-pale); }
+
+/* =========================
+   SELECCIÓN DE TEXTO
+========================= */
+::selection { background: rgba(200,152,42,0.3); color: var(--paper); }
+
+/* =========================
+   PANEL BASE
+========================= */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border-gold);
+  padding: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+/* =========================
+   BOTONES BASE
+========================= */
+button {
+  background: transparent;
+  color: var(--paper-dark);
+  border: 1px solid var(--border-gold);
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-type);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+button:active { transform: scale(0.97); }
+
+/* =========================
+   INPUTS
+========================= */
+input {
+  background: rgba(10,8,4,0.9);
+  border: 1px solid var(--border-gold);
+  color: var(--paper);
+  padding: 0.5rem 0.7rem;
+  font-family: var(--font-type);
+  font-size: 0.78rem;
+  border-radius: 0;
+}
+input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(200,152,42,0.25);
+}
+
+/* =========================
+   BADGES
+========================= */
+.badge {
+  background: rgba(20,14,6,0.8);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  padding: 3px 8px;
+  font-family: var(--font-type);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.badge.red   { border-color: var(--blood);  color: #d06060; }
+.badge.gold  { border-color: var(--gold);   color: var(--gold-pale); background: rgba(200,152,42,0.12); }
+
+/* =========================
+   UTILIDADES
+========================= */
+.text-center { text-align: center; }
+.mt  { margin-top: 1rem; }
+.mb  { margin-bottom: 1rem; }
+.flex      { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap       { gap: 0.6rem; }
